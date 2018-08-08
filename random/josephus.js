@@ -10,3 +10,15 @@ const josephus = (players, steps) => {
 
 const test = josephus(14, 2);
 console.log(test);
+
+function josephus(players, steps) {
+  if (players === 1) return 1;
+  else return ((josephus(players - 1, steps) + steps - 1) % players) + 1;
+}
+
+// Steps if 2, and O(log N) time, O(1) space
+function josephus2(players) {
+  let p = 1;
+  while (p <= players) p *= 2;
+  return 2 * players - p + 1;
+}
