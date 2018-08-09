@@ -46,4 +46,23 @@ function buildtrie(text) {
 //   }
 // }
 
-function findOrCreateTrie(book) {}
+function findOrCreateTrie(book) {
+  if (!tries.hasOwnProperty(book.id)) {
+    tries[book.id] = buildtrie(book.text);
+  }
+  return tries[book.id];
+}
+
+function findWordsStartingWith(book, word) {
+  const trie = findOrCreateTrie(book);
+  let node = trie;
+  for (let i = 0; i < word.length; i++) {
+    const char = word[i];
+    node = node[char];
+    if (!node) return [];
+  }
+  return node.indexes;
+}
+
+const test = findWordsStartingWith(book, 'cat');
+console.log(test);
