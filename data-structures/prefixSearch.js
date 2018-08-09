@@ -17,3 +17,33 @@ const book = {
 //   }
 //   console.log(results);
 // }
+
+const tries = {};
+
+function buildtrie(text) {
+  const trie = {};
+  text = text.toLowerCase();
+  for (let i = 0; i < text.length; i++) {
+    let node = trie;
+    const starting = i;
+    while (text[i] !== ' ' && text[i] !== ',' && text[i] !== '.') {
+      const char = text[i];
+      node[char] = node[char] || { indexes: [] };
+      node[char].indexes.push(starting);
+      node = node[char];
+      i++;
+    }
+  }
+  return trie;
+}
+
+// function findOrCreateTrie(book) {
+//   if (tries[book.id]) return tries[book.id];
+//   else {
+//     const trie = buildtrie(book.text);
+//     tries[book.id] = trie;
+//     return trie;
+//   }
+// }
+
+function findOrCreateTrie(book) {}
