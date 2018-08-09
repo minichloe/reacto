@@ -16,6 +16,8 @@ function josephus(players, steps) {
   else return ((josephus(players - 1, steps) + steps - 1) % players) + 1;
 }
 
+// n is even: f(n) = 2f(n/2) - 1
+// n is odd: f(n) = 2f((n-1/2)) + 1
 // Steps if 2, and O(log N) time, O(1) space
 function josephus2(players) {
   let p = 1;
