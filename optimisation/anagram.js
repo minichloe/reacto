@@ -10,3 +10,15 @@ function anagram(arr) {
   });
   return Object.keys(wordObj).filter(word => wordObj[word].length > 1);
 }
+
+const test = anagram([
+  'cat',
+  'act',
+  'ignore',
+  'a phrase',
+  'tape',
+  'pate',
+  'e hpsara',
+]);
+
+console.log(test);
