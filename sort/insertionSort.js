@@ -8,3 +8,7 @@ function insertionSort(arr) {
   }
   return arr;
 }
+
+const test = insertionSort([23, 6, 2, 8, 56, -1]);
+
+console.log(test);
