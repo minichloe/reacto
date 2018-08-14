@@ -11,6 +11,7 @@ function validator(arr) {
     }
     if (!checker(column) || !checker(section)) return false;
   }
+  return true;
 }
 
 function checker(arr) {
@@ -28,3 +29,5 @@ const test = validator([
   [2, 8, 7, 4, 1, 9, 6, 3, 5],
   [3, 4, 5, 2, 8, 6, 1, 7, 9],
 ]);
+
+console.log(test);
