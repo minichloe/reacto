@@ -30,4 +30,4 @@ const test = validator([
   [3, 4, 5, 2, 8, 6, 1, 7, 9],
 ]);
 
-console.log(test);
+// console.log(test);
