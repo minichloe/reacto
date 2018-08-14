@@ -8,7 +8,10 @@ function anagram(arr) {
     if (!wordObj[wordKey]) wordObj[wordKey] = [word];
     else wordObj[wordKey].push(word);
   });
-  return Object.keys(wordObj).filter(word => wordObj[word].length > 1);
+  return Object.keys(wordObj).reduce((output, word) => {
+    if (wordObj[word].length > 1) output.push(wordObj[word]);
+    return output;
+  }, []);
 }
 
 const test = anagram([
