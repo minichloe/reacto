@@ -12,6 +12,21 @@ function subsetSum(target, arr) {
   return false;
 }
 
+// Recursive approach
+function subsetSumRecursion(target, arr, idx = 0) {
+  if (target === 0) return true;
+  if (target < 0 || idx === arr.length) return false;
+  const num = arr[idx];
+  const whenExcluded = subsetSumRecursion(target, arr, idx + 1);
+  const whenIncluded = subsetSumRecursion(target - num, arr, idx + 1);
+  return whenExcluded || whenIncluded;
+}
+
+// Recurisve with memoization
+function subsetSumMemo(target, arr, idx = 0, memo = {}) {
+  if (memo.hasOwnProperty(target)) return memo[target];
+}
+
 const res = subsetSum(2, [1, 10, 5, 3]); // false
 // subsetSum(10, [1, 10, 5, 3]); // true
 // const res = subsetSum(9, [1, 10, 5, 3]); // true
