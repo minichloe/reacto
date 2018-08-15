@@ -11,3 +11,11 @@ function subsetSum(target, arr) {
   }
   return false;
 }
+
+const res = subsetSum(2, [1, 10, 5, 3]); // false
+// subsetSum(10, [1, 10, 5, 3]); // true
+// const res = subsetSum(9, [1, 10, 5, 3]); // true
+// subsetSum(19, [1, 10, 5, 3]); // true
+// subsetSum(17, [1, 10, 5, 3]); // false
+
+console.log(res);
