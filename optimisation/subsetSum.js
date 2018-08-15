@@ -25,12 +25,20 @@ function subsetSumRecursion(target, arr, idx = 0) {
 // Recurisve with memoization
 function subsetSumMemo(target, arr, idx = 0, memo = {}) {
   if (memo.hasOwnProperty(target)) return memo[target];
+  if (target === 0) return true;
+  if (target < 0 || idx === arr.length) return false;
+  const num = arr[idx];
+  const whenExcluded = subsetSumMemo(target, arr, idx + 1);
+  const whenIncluded = subsetSumMemo(target - num, arr, idx + 1);
+  const result = whenExcluded || whenIncluded;
+  memo[target] = result;
+  return result;
 }
 
 const res = subsetSum(2, [1, 10, 5, 3]); // false
-// subsetSum(10, [1, 10, 5, 3]); // true
+const res2 = subsetSumMemo(10, [1, 10, 5, 3]); // true
 // const res = subsetSum(9, [1, 10, 5, 3]); // true
 // subsetSum(19, [1, 10, 5, 3]); // true
 // subsetSum(17, [1, 10, 5, 3]); // false
 
-console.log(res);
+console.log(res, res2);
