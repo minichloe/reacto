@@ -42,11 +42,11 @@ function magicNumCount(target, arr) {
 function magicNumHash(target, arr) {
   let hash = { 0: 1 };
   for (let i = 0; i < arr.length; i++) {
-    const newHash = {};
+    let newHash = {};
     for (let key in hash) {
       const keyVal = parseInt(key);
-      newHash[keyVal + arr[i]] = (newHash[key + arr[i]] || 0) + hash[key];
-      newHash[keyVal - arr[i]] = (newHash[key - arr[i]] || 0) + hash[key];
+      newHash[keyVal + arr[i]] = (newHash[keyVal + arr[i]] || 0) + hash[key];
+      newHash[keyVal - arr[i]] = (newHash[keyVal - arr[i]] || 0) + hash[key];
     }
     hash = newHash;
   }
@@ -54,5 +54,5 @@ function magicNumHash(target, arr) {
 }
 
 const test = magicNum(11, [1, 2, 3, 4, 5]);
-const test2 = magicNumCount(3, [1, 1, 1, 1, 1]);
+const test2 = magicNumHash(3, [1, 1, 1, 1, 1]);
 console.log(test, test2);
