@@ -1,3 +1,5 @@
+// Given a number of players in a circle and steps taken to remove every person, find position of last person remaining
+
 const josephus = (players, steps) => {
   const arr = new Array(players).fill(1).map((x, i) => i + 1);
   let i = 0;
