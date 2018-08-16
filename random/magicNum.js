@@ -17,7 +17,7 @@ function magicNum(target, arr) {
 // Return num of different ways numbers can compute to target
 function magicNumCount(target, arr) {
   let finalArr = [0];
-  const res = 0;
+  let res = 0;
   for (let i = 0; i < arr.length; i++) {
     const tempNums = [...finalArr];
     finalArr = [];
@@ -32,7 +32,6 @@ function magicNumCount(target, arr) {
       finalArr.push(addNum, minusNum);
     }
   }
-  // return finalArr.filter(x => x === target).length;
   return res;
 }
 
