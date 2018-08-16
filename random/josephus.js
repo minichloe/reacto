@@ -5,17 +5,19 @@ const josephus = (players, steps) => {
   let i = 0;
   while (arr.length > 1) {
     i = (i + steps) % arr.length;
+    console.log(i);
     arr.splice(i - 1, 1);
   }
   return arr[0];
 };
 
-const test = josephus(14, 2);
+const test = josephus(10, 2);
 console.log(test);
 
-function josephus(players, steps) {
+function josephusRecursion(players, steps) {
   if (players === 1) return 1;
-  else return ((josephus(players - 1, steps) + steps - 1) % players) + 1;
+  else
+    return ((josephusRecursion(players - 1, steps) + steps - 1) % players) + 1;
 }
 
 // n is even: f(n) = 2f(n/2) - 1
