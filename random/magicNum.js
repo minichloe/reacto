@@ -15,26 +15,6 @@ function magicNum(target, arr) {
 }
 
 // Return num of different ways numbers can compute to target
-// function magicNumCount(target, arr) {
-//   let finalArr = [0];
-//   let res = 0;
-//   for (let i = 0; i < arr.length; i++) {
-//     const tempNums = [...finalArr];
-//     finalArr = [];
-//     for (num of tempNums) {
-//       const addNum = num + arr[i];
-//       const minusNum = num - arr[i];
-//       if (i === arr.length - 1) {
-//         if (addNum === target) res++;
-//         if (minusNum === target) res++;
-//         continue;
-//       }
-//       finalArr.push(addNum, minusNum);
-//     }
-//   }
-//   return res;
-// }
-
 function magicNumCount(target, arr) {
   let finalArr = [0];
   let res = 0;
@@ -57,6 +37,20 @@ function magicNumCount(target, arr) {
     }
   }
   return res;
+}
+
+function magicNumHash(target, arr) {
+  let hash = { 0: 1 };
+  for (let i = 0; i < arr.length; i++) {
+    const newHash = {};
+    for (let key in hash) {
+      const keyVal = parseInt(key);
+      newHash[keyVal + arr[i]] = (newHash[key + arr[i]] || 0) + hash[key];
+      newHash[keyVal - arr[i]] = (newHash[key - arr[i]] || 0) + hash[key];
+    }
+    hash = newHash;
+  }
+  return hash[target] || 0;
 }
 
 const test = magicNum(11, [1, 2, 3, 4, 5]);
