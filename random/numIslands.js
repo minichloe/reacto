@@ -7,7 +7,6 @@ function numIslands(grid) {
       if (grid[i][j] === '1') {
         islands++;
         helper(i, j, grid);
-        console.log('HIII');
       }
     }
   }
@@ -17,13 +16,14 @@ function numIslands(grid) {
 function helper(i, j, grid) {
   const queue = [[i, j]];
   while (queue.length) {
-    console.log(queue);
     const [a, b] = queue.shift();
-    if (a + 1 < grid.length) queue.push([a + 1, b]);
-    if (a - 1 >= 0) queue.push([a - 1, b]);
-    if (b + 1 < grid[a].length) queue.push([a, b + 1]);
-    if (b - 1 >= 0) queue.push([a, b - 1]);
-    if (grid[a] && grid[a][b] === '1') grid[a][b] = 2;
+    if (grid[a][b] === '1') {
+      grid[a][b] = false;
+      if (a + 1 < grid.length) queue.push([a + 1, b]);
+      if (a - 1 >= 0) queue.push([a - 1, b]);
+      if (b + 1 < grid[a].length) queue.push([a, b + 1]);
+      if (b - 1 >= 0) queue.push([a, b - 1]);
+    }
   }
 }
 
