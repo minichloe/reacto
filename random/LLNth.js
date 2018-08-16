@@ -14,3 +14,13 @@ function traverseNode(startNode, num) {
   }
   return startNode;
 }
+
+// Access middle of linked list
+function getMiddle(startNode) {
+  let fastNode = startNode;
+  while (fastNode) {
+    startNode = startNode.next;
+    fastNode = fastNode.next.next;
+  }
+  return startNode;
+}
