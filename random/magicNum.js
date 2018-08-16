@@ -15,21 +15,45 @@ function magicNum(target, arr) {
 }
 
 // Return num of different ways numbers can compute to target
+// function magicNumCount(target, arr) {
+//   let finalArr = [0];
+//   let res = 0;
+//   for (let i = 0; i < arr.length; i++) {
+//     const tempNums = [...finalArr];
+//     finalArr = [];
+//     for (num of tempNums) {
+//       const addNum = num + arr[i];
+//       const minusNum = num - arr[i];
+//       if (i === arr.length - 1) {
+//         if (addNum === target) res++;
+//         if (minusNum === target) res++;
+//         continue;
+//       }
+//       finalArr.push(addNum, minusNum);
+//     }
+//   }
+//   return res;
+// }
+
 function magicNumCount(target, arr) {
   let finalArr = [0];
   let res = 0;
   for (let i = 0; i < arr.length; i++) {
-    const tempNums = [...finalArr];
-    finalArr = [];
-    for (num of tempNums) {
+    const length = finalArr.length;
+    let j = 0;
+    while (j < length) {
+      const num = finalArr[j];
       const addNum = num + arr[i];
       const minusNum = num - arr[i];
       if (i === arr.length - 1) {
         if (addNum === target) res++;
         if (minusNum === target) res++;
+        j++;
         continue;
       }
-      finalArr.push(addNum, minusNum);
+      finalArr[j] = addNum;
+      j++;
+      finalArr.push(minusNum);
     }
   }
   return res;
