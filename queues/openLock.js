@@ -33,4 +33,6 @@ function generatePermutations(base) {
 }
 
 const test = openLock(['0201', '0101', '0102', '1212', '2002'], '0202');
+const test2 = openLock(['0000'], '0109');
 console.log(test); // 6
+console.log(test2); // -1
