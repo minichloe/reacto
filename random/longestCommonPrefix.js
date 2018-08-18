@@ -1,6 +1,7 @@
 function longestCommonPrefix(arr) {
   if (arr.length < 1) return '';
   arr.sort((a, b) => a.toLowerCase().length - b.toLowerCase().length);
+  if (arr[0].length < 1) return '';
   const length = arr.length;
   let prefix = '';
   for (let i = 0; i < arr[0].length; i++) {
