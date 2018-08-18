@@ -1,7 +1,8 @@
 function longestCommonPrefix(arr) {
+  if (arr.length < 1) return '';
   arr.sort((a, b) => a.toLowerCase().length - b.toLowerCase().length);
   const length = arr.length;
-  const prefix = '';
+  let prefix = '';
   for (let i = 0; i < arr[0].length; i++) {
     let pre = true;
     const char = arr[0][i];
@@ -15,3 +16,6 @@ function longestCommonPrefix(arr) {
   }
   return prefix;
 }
+
+const test = longestCommonPrefix(['flower', 'flow', 'flight']);
+console.log(test);
