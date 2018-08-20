@@ -19,7 +19,7 @@ function longestCommonPrefix(arr) {
   return prefix;
 }
 
-// const test = longestCommonPrefix(['flower', 'flow', 'flight']);
+const test = longestCommonPrefix(['flower', 'flow', 'flight']);
 const test2 = longestCommonPrefix(['aca', 'cba']);
-// console.log(test);
+console.log(test);
 console.log(test2);
