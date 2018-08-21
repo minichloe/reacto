@@ -1,15 +1,11 @@
 const removeNthFromEnd = function(head, n) {
-  let fastNode = head;
-  while (fastNode && n >= 0) {
+  let fastNode = head.next;
+  node = head;
+  while (fastNode) {
     fastNode = fastNode.next;
-    n--;
+    n > 0 ? n-- : (node = node.next);
   }
-  let node = head;
-  while (node.next !== fastNode) {
-    node = node.next;
-    if (!node.next) return head;
-  }
-  let nextNode = node.next.next;
-  node.next = nextNode;
+  if (n === 1) return head.next;
+  node.next = node.next.next || null;
   return head;
 };
