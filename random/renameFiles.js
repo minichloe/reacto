@@ -2,10 +2,11 @@ function renameFiles(arr) {
   const map = {};
   for (let i = 0; i < arr.length; i++) {
     if (!map.hasOwnProperty(arr[i])) {
-      map[arr[i]] = 1;
+      map[arr[i]] = 0;
     } else {
+      map[arr[i]] = map[arr[i]] + 1;
       arr[i] = arr[i] + map[arr[i]];
-      map[arr[i]] += 1;
+      console.log(map);
     }
   }
   return arr;
