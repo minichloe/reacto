@@ -11,3 +11,6 @@ function recursiveParentheses(str, max, count) {
   let r2 = count > 0 ? recursiveParentheses(str + ')', max, count - 1) : [];
   return r1.concat(r2);
 }
+
+const test = generateParentheses(3);
+console.log(test);
