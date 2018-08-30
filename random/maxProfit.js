@@ -17,7 +17,8 @@ function maxProfit(prices) {
   let lowest = prices[0],
     profit = 0;
   for (let i = 0; i < prices.length; i++) {
-    if (prices[i] - lowest > profit) profit = prices[i] - lowest;
+    const diff = prices[i] - lowest;
+    if (diff > profit) profit = diff;
     if (lowest > prices[i]) lowest = prices[i];
   }
   return profit;
