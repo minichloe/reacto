@@ -20,4 +20,5 @@ function searchRange(nums, target) {
 }
 
 const test = searchRange([5, 7, 7, 8, 8, 10], 6);
-console.log(test);
+const test2 = searchRange([1], 1);
+console.log(test, test2);
