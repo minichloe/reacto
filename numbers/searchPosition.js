@@ -14,9 +14,10 @@ function searchRange(nums, target) {
       }
       return [left + 1, right - 1];
     }
+    mid = Math.floor((left + right) / 2);
   }
   return res;
 }
 
-const test = searchRange([5, 7, 7, 8, 8, 10], 8);
+const test = searchRange([5, 7, 7, 8, 8, 10], 6);
 console.log(test);
