@@ -83,9 +83,9 @@ class PQ {
         else topIdx = right;
       } else topIdx = left;
       if (
-        this.items[curr].count > this.items[topIdx].count ||
+        this.items[curr].count < this.items[topIdx].count ||
         (this.items[curr].count === this.items[topIdx].count &&
-          this.items[curr].char.charCodeAt(0) <
+          this.items[curr].char.charCodeAt(0) >
             this.items[topIdx].char.charCodeAt(0))
       ) {
         this.swap(curr, topIdx);
