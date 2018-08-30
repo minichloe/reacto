@@ -9,11 +9,10 @@ function strSort(str) {
     queue.insert(x, map[x]);
   }
   let resultStr = '';
-  const length = queue.items.length;
-  for (let i = 0; i < length; i++) {
+  while (queue.items.length > 1) {
     resultStr += queue.popMax();
   }
-  return resultStr;
+  return (resultStr += queue.popMax());
 }
 
 class Char {
