@@ -4,7 +4,7 @@ function searchRange(nums, target) {
   let mid = Math.floor(nums.length / 2);
   let left = 0,
     right = nums.length - 1;
-  for (left, right; left < right; ) {
+  for (left, right; left <= right; ) {
     nums[mid] > target ? (right = mid - 1) : (left = mid + 1);
     if (nums[mid] === target) {
       (left = mid - 1), (right = mid + 1);
