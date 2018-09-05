@@ -1,3 +1,4 @@
+// Recursive approach only for complete binary trees
 function connect(root, next = null) {
   if (!root) return;
   root.next = next;
