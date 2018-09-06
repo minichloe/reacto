@@ -1,7 +1,7 @@
-const MinStack = () => {
+function MinStack() {
   this.min = null;
   this.stack = [];
-};
+}
 
 MinStack.prototype.push = function(val) {
   this.stack.push(val);
