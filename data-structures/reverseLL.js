@@ -24,7 +24,7 @@ const reverseList = head => {
   return dummy;
 };
 
-// Recursive solution
+// Recursive solution copy
 // const reverseList = (head, dummy = null) => {
 //   if (!head) return dummy;
 //   const node = new ListNode(head.val);
@@ -32,3 +32,12 @@ const reverseList = head => {
 //   dummy = node;
 //   return reverseList(head.next, dummy);
 // };
+
+// Reverse LL recursive
+const reverseListRecursive = head => {
+  if (!head || !head.next) return head;
+  const node = reverseListRecursive(head.next);
+  head.next.next = head;
+  head.next = null;
+  return node;
+};
