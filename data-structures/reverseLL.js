@@ -1,3 +1,4 @@
+// Reverse LL iterative copy
 // const reverseList = head => {
 //   if (!head) return head;
 //   let dummy = new ListNode(head.val);
@@ -9,6 +10,19 @@
 //   }
 //   return dummy;
 // };
+
+// Reverse LL iterative
+const reverseList = head => {
+  if (!head || !head.next) return head;
+  let dummy = null;
+  while (head) {
+    const node = head.next;
+    head.next = dummy;
+    dummy = head;
+    head = node;
+  }
+  return dummy;
+};
 
 // Recursive solution
 // const reverseList = (head, dummy = null) => {
