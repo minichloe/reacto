@@ -10,3 +10,6 @@ function maxSubArray(nums) {
   }
   return Math.max(...sums);
 }
+
+const test = maxSubArray([-2, 1, -3, 4, -1, 2, 1, -5, 4]);
+console.log(test); // 6, from [4, -1, 2, 1]
