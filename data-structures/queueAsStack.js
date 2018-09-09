@@ -41,3 +41,10 @@ class MyQueue {
     return this.top.val;
   }
 }
+
+const queue = new MyQueue();
+queue.push(1);
+queue.push(2);
+console.log(queue.peek()); // 1
+console.log(queue.pop()); // 1
+console.log(queue.empty()); // false
