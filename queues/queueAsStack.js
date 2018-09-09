@@ -12,7 +12,7 @@ class MyQueue {
     this.tail = null;
   }
   empty() {
-    return this.length === null;
+    return this.top === null;
   }
   push(val) {
     if (this.top) {
