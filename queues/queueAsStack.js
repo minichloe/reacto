@@ -10,10 +10,9 @@ class MyQueue {
   constructor() {
     this.top = null;
     this.tail = null;
-    this.length = 0;
   }
   empty() {
-    return this.length === 0;
+    return this.length === null;
   }
   push(val) {
     if (this.top) {
@@ -24,7 +23,6 @@ class MyQueue {
       this.top = new Node(val);
       this.tail = this.top;
     }
-    this.length++;
   }
   peek() {
     return this.top.val;
@@ -36,15 +34,19 @@ class MyQueue {
       this.tail = null;
     } else {
       this.top = this.top.next;
+      this.top.prev = null;
     }
-    this.length--;
-    return this.top.val;
+    return temp.val;
   }
 }
 
 const queue = new MyQueue();
 queue.push(1);
 queue.push(2);
+queue.push(3);
+queue.push(4);
+queue.push(5);
 console.log(queue.peek()); // 1
 console.log(queue.pop()); // 1
+console.log(queue.pop()); // 2
 console.log(queue.empty()); // false
