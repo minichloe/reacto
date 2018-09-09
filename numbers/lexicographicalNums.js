@@ -1,17 +1,24 @@
 function lexicalOrder(n) {
+  if (n < 1) return [];
+  const hash = {};
   const nums = [];
-  const factor = [];
-  while (n > 0) {
-    factor.push(n % 10);
-    n = Math.floor(n / 10);
+  for (let i = 1; i < 10; i++) {
+    if (i <= n) {
+      nums.push(i);
+      helper(i);
+    }
   }
-  console.log(factor);
-  if (factor.length > 1) nums.push(1);
-  // while (factor.length) {
-  //   const count = factor.pop();
-  //   con;
-  // }
+  return nums;
+
+  function helper(p) {
+    for (let i = 0; i < 10; i++) {
+      const curr = p * 10 + i;
+      if (curr > n) return;
+      else nums.push(curr);
+      helper(curr);
+    }
+  }
 }
 
-const test = lexicalOrder(13);
+const test = lexicalOrder(103);
 console.log(test);
