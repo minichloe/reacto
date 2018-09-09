@@ -1,6 +1,5 @@
 function lexicalOrder(n) {
   if (n < 1) return [];
-  const hash = {};
   const nums = [];
   for (let i = 1; i < 10; i++) {
     if (i <= n) {
