@@ -14,5 +14,5 @@ function merge(intervals) {
 }
 
 const test = merge([[1, 3], [2, 6], [8, 10], [15, 18]]);
-const test2 = merge([[1, 4], [4, 5]]);
+const test2 = merge([[1, 4], [4, 5], [7, 9]]);
 console.log(test2);
