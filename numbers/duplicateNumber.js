@@ -4,7 +4,8 @@ function findDuplicate(nums) {
   if (nums.length <= 2) return nums[0];
   let slow = nums[0];
   fast = nums[slow];
-  while (slow != fast) {
+  while (slow !== fast) {
+    console.log(slow, fast);
     slow = nums[slow];
     fast = nums[nums[fast]];
   }
