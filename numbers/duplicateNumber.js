@@ -4,8 +4,11 @@ function findDuplicate(nums) {
   let slow = 0;
   fast = nums[slow];
   while (nums[slow] != nums[fast]) {
-    slow = nums[fast];
-    fast = nums[slow];
+    slow = nums[slow];
+    fast = nums[fast];
   }
   return nums[slow];
 }
+
+const test = findDuplicate([3, 1, 3, 4, 2]);
+console.log(test);
