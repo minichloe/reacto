@@ -11,4 +11,8 @@ function isValid(s) {
     else if (brackets[arr.pop()] === x) continue;
     else return false;
   }
+  return true;
 }
+
+const test = isValid('(()[]{}');
+console.log(test);
