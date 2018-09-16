@@ -1,11 +1,10 @@
 function reverseWords(str) {
-  str = str.trim().replace(/\s+/gi, ' ');
-  // if (str === ' ') return '';
   return str
-    .split(' ')
+    .trim()
+    .split(/\s+/)
     .reverse()
     .join(' ');
 }
 
-const test = reverseWords('   ');
-console.log('a' + test + 'a');
+const test = reverseWords('the sky is   blue');
+console.log(test);
