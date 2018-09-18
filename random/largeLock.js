@@ -11,3 +11,6 @@ function largeLock(arr1, arr2) {
   }
   return rotations;
 }
+
+const test = largeLock([0, 0, 0], [3, 1, 8]);
+console.log(test);
