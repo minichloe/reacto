@@ -11,5 +11,9 @@ const groupAnagrams = strs => {
       map[key] = [word];
     }
   });
-  console.log(map);
+  const res = [];
+  Object.keys(map).forEach(key => {
+    if (map[key].length > 1) res.push(map[key]);
+  });
+  return res;
 };
