@@ -13,3 +13,7 @@ function merge(nums1, m, nums2, n) {
     }
   }
 }
+
+let arr = [1, 2, 3, 0, 0, 0];
+const test = merge(arr, 3, [2, 5, 6], 3);
+console.log(arr);
