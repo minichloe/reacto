@@ -11,9 +11,14 @@ const groupAnagrams = strs => {
       map[key] = [word];
     }
   });
-  const res = [];
-  Object.keys(map).forEach(key => {
-    if (map[key].length > 1) res.push(map[key]);
-  });
-  return res;
+  return Object.values(map);
 };
+
+const test = groupAnagrams(['eat', 'tea', 'tan', 'ate', 'nat', 'bat']);
+console.log(test);
+/* [
+  ["ate","eat","tea"],
+  ["nat","tan"],
+  ["bat"]
+]
+*/
