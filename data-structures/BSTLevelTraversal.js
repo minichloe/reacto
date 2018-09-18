@@ -1,18 +1,22 @@
 function levelOrder(root) {
   if (!root) return [];
   const res = [[root.val]];
-  const queue = [root];
+  const queue = [[root]];
   while (queue.length) {
     const temp = queue.shift();
     const tempVal = [];
-    if (temp.left) {
-      queue.push(temp.left);
-      tempVal.push(temp.left.val);
-    }
-    if (temp.right) {
-      queue.push(temp.right);
-      tempVal.push(temp.right.val);
-    }
+    const tempNodes = [];
+    temp.forEach(x => {
+      if (x.left) {
+        tempNodes.push(x.left);
+        tempVal.push(x.left.val);
+      }
+      if (x.right) {
+        tempNodes.push(x.right);
+        tempVal.push(x.right.val);
+      }
+    });
+    if (tempNodes.length) queue.push(tempNodes);
     if (tempVal.length) res.push(tempVal);
   }
   return res;
