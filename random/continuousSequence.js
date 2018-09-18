@@ -17,6 +17,11 @@ function continuousSequences(num) {
       currNum = digits[i];
       isOddOrEven = currNum % 2;
     }
+    // Check to see if it is the final iteration of the loop and add numberto results
+    if (i === 0) results.push(currNum);
   }
   return results;
 }
+
+const test = continuousSequences(135206);
+console.log(test);
