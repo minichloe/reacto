@@ -5,15 +5,29 @@ function movieControl(elapsed, fullTime, action, actionTime) {
   elapsedSecs = elapsed[2] + elapsed[1] * 60 + elapsed[0] * 3600;
   // If reporting progress, convert time to seconds to find percentage
   // Instructions did not specify how specific the percentage should be so I rounded it to the nearest percent
-  if (action === 'Report Progress')
+  if (action === 'Report Progress') {
     return Math.round((elapsedSecs / fullTimeSecs) * 100);
-  if (typeof actionTime === 'number') {
+  }
+  if (typeof actionTime === 'string') {
+    actionTime = actionTime.split(':').map(x => Number(x));
+    actionTime = actionTime[2] + actionTime[1] * 60 + actionTime[0] * 3600;
     if (action === 'Rewind') {
-      elapsed = (actionTime / 100) * elapsed;
-    } else if (action === 'Fast Forward') {
-      elapsed += (fullTimeSecs - elapsed) * (actionTime / 100);
+      elapsedSecs -= actionTime;
+      if (elapsedSecs <= 0) return `00:00:00`;
+    } else {
+      elapsedSecs += actionTime;
+      if (elapsedSecs > fullTimeSecs) return 'Movie Finished';
     }
-    return convertSecsToClock(elapsed);
+    return convertSecsToClock(elapsedSecs);
+  } else {
+    if (action === 'Rewind') {
+      elapsedSecs = (actionTime / 100) * elapsedSecs;
+      if (elapsedSecs <= 0) return `00:00:00`;
+    } else if (action === 'Fast Forward') {
+      elapsedSecs += (fullTimeSecs - elapsedSecs) * (actionTime / 100);
+      if (elapsedSecs > fullTimeSecs) return 'Movie Finished';
+    }
+    return convertSecsToClock(elapsedSecs);
   }
 }
 
@@ -37,5 +51,5 @@ function convertSecsToClock(seconds) {
 }
 
 // const test = convertSecsToClock(1200);
-const test = movieControl('00:20:00', '02:40:00', 'Fast Forward', 50);
+const test = movieControl('01:00:00', '03:00:00', 'Rewind', 50);
 console.log(test);
