@@ -3,9 +3,8 @@ function largeLock(arr1, arr2) {
   for (let i = 0; i < arr1.length; i++) {
     if (arr1[i] === arr2[i]) continue;
     else {
-      const turn = arr1[i] > arr2[i] ? (arr1[i] = arr2[i]) : arr2[i] - arr1[i];
-      const turn2 =
-        arr1[i] > arr2[i] ? 9 - arr1[i] + arr[2] : 9 - arr1[i] + arr2[i];
+      const turn = Math.abs(arr1[i] - arr2[i]);
+      const turn2 = 10 - turn;
       rotations += Math.min(turn, turn2);
     }
   }
