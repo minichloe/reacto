@@ -11,13 +11,13 @@ function lengthOfLongestSubstring(str) {
       map[rightChar] = rightIdx;
       rightIdx++;
     } else {
+      leftIdx = map[rightChar] + 1;
       delete map[leftChar];
-      leftIdx++;
     }
     count = Math.max(count, rightIdx - leftIdx);
   }
   return count;
 }
 
-const test = lengthOfLongestSubstring('abcabcabb');
+const test = lengthOfLongestSubstring('pwwkew');
 console.log(test);
