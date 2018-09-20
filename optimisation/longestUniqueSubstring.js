@@ -5,19 +5,19 @@ function lengthOfLongestSubstring(str) {
   const map = {};
   if (!str.length) return count;
   while (rightIdx < str.length) {
-    const leftChar = str[leftIdx];
+    rightIdx++;
+    if (rightIdx === str.length) break;
     const rightChar = str[rightIdx];
-    if (map[rightChar] === undefined) {
+    if (map[rightChar] === undefined || map[rightChar] < leftIdx) {
       map[rightChar] = rightIdx;
-      rightIdx++;
     } else {
       leftIdx = map[rightChar] + 1;
-      delete map[leftChar];
+      map[rightChar] = rightIdx;
     }
     count = Math.max(count, rightIdx - leftIdx);
   }
   return count;
 }
 
-const test = lengthOfLongestSubstring('pwwkew');
+const test = lengthOfLongestSubstring('abcabc');
 console.log(test);
