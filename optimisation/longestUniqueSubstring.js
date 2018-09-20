@@ -29,12 +29,9 @@ function lengthOfLongestSubstring(str) {
     rightIdx++;
     if (rightIdx === str.length) break;
     const rightChar = str[rightIdx];
-    if (map[rightChar] === undefined || map[rightChar] < leftIdx) {
-      map[rightChar] = rightIdx;
-    } else {
+    if (map[rightChar] !== undefined && map[rightChar] >= leftIdx)
       leftIdx = map[rightChar] + 1;
-      map[rightChar] = rightIdx;
-    }
+    map[rightChar] = rightIdx;
     count = Math.max(count, rightIdx - leftIdx + 1);
   }
   return count;
