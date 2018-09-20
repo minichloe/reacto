@@ -24,7 +24,7 @@ function lengthOfLongestSubstring(str) {
     leftIdx = 0,
     rightIdx = 0;
   const map = { [str[leftIdx]]: leftIdx };
-  if (!str.length) return count;
+  if (!str.length) return 0;
   while (rightIdx < str.length) {
     rightIdx++;
     if (rightIdx === str.length) break;
