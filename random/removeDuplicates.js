@@ -1,5 +1,6 @@
 function removeDuplicates(nums) {
   if (!nums.length) return 0;
+  // Keep track of where we want to switch the values of the array
   let curr = nums[0],
     j = 1;
   for (let i = 1; i < nums.length; i++) {
@@ -9,6 +10,7 @@ function removeDuplicates(nums) {
       j++;
     }
   }
+  // j is the values switched so also the length
   return j;
 }
 
