@@ -6,8 +6,7 @@ function removeDuplicates(nums) {
   for (let i = 1; i < nums.length; i++) {
     if (nums[i] !== curr) {
       curr = nums[i];
-      nums[j] = curr;
-      j++;
+      nums[j++] = curr;
     }
   }
   // j is the values switched so also the length
