@@ -5,7 +5,7 @@ function detectCycle(head) {
   let fast = head.next.next;
   while (slow !== fast) {
     slow = slow.next;
-    if (!fast.next.next) return null;
+    if (!fast.next) return null;
     fast = fast.next.next;
   }
   let fast = head;
