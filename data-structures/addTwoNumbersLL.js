@@ -25,3 +25,25 @@ function addTwoNumbersSlow(l1, l2) {
   }
   return list.val === 0 ? list.next : list;
 }
+
+function addTwoNumbers(l1, l2) {
+  const list = new ListNode(0);
+  let node = list,
+    carry = 0;
+  while (l1 || l2) {
+    let val = carry;
+    if (l1) {
+      val += l1.val;
+      l1 = l1.next;
+    }
+    if (l2) {
+      val += l2.val;
+      l2 = l2.next;
+    }
+    carry = Math.floor(val / 10);
+    node.next = new ListNode(val % 10);
+    node = node.next;
+  }
+  if (carry) node.next = new ListNode(carry);
+  return list.next;
+}
