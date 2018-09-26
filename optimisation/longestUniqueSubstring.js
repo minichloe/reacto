@@ -37,5 +37,23 @@ function lengthOfLongestSubstring(str) {
   return count;
 }
 
-const test = lengthOfLongestSubstring('abca');
-console.log(test);
+function longestLength(str) {
+  if (!str.length) return 0;
+  let count = 1,
+    leftIdx = 0,
+    rightIdx = 0;
+  const map = { [str[leftIdx]]: leftIdx };
+  for (++rightIdx; rightIdx < str.length; rightIdx++) {
+    if (map.hasOwnProperty(str[rightIdx])) {
+      leftIdx = Math.max(leftIdx, map[str[rightIdx]] + 1);
+    }
+    count = Math.max(count, rightIdx - leftIdx + 1);
+    map[str[rightIdx]] = rightIdx;
+  }
+  return count;
+}
+
+// const test = lengthOfLongestSubstring('abca');
+// console.log(test);
+const test2 = longestLength('abcda');
+console.log(test2);
