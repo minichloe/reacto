@@ -1,4 +1,5 @@
-function addTwoNumbers(l1, l2) {
+// Unoptimized way to run through both lists taking out the values, then doing final loop to add numbers together
+function addTwoNumbersSlow(l1, l2) {
   let p1 = l1,
     p2 = l2;
   const s1 = [],
