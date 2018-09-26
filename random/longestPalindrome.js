@@ -1,28 +1,26 @@
 function longestPalindrome(str) {
-  if (str.length < 1) return '';
-  let start = 0,
-    end = 0;
+  if (str.length <= 1) return str;
+  let res = '';
   for (let i = 0; i < str.length; i++) {
-    let len1 = expandAroundCentre(str, i, i);
-    let len2 = expandAroundCentre(str, i, i + 1);
-    let len = Math.max(len1, len2);
-    if (len > end - start) {
-      start = i - (len - 1) / 2;
-      end = i + len / 2;
+    if (i > 0 && str[i] == str[i - 1]) checkPalindrome(i - 1, i, str);
+    checkPalindrome(i, i, str);
+  }
+  return res;
+
+  function checkPalindrome(L, R, str) {
+    while (L >= 0 && R < str.length) {
+      // Check palindrome from center and keep expanding outwards
+      if (str[L] == str[R]) {
+        L--;
+        R++;
+      } else break;
     }
+    // Reverse left index by one since the last iteration is not a palindrome
+    L++;
+    // Check to see if new palindrome is longer than previous recorded answer
+    if (R - L > res.length) res = str.substring(L, R);
   }
-  return str.slice(start, end + 1);
 }
 
-function expandAroundCentre(str, left, right) {
-  let L = left,
-    R = right;
-  while (L >= 0 && R < str.length && str[L] === str[R]) {
-    L--;
-    R++;
-  }
-  return R - L - 1;
-}
-
-const test = longestPalindrome('cbbd');
+const test = longestPalindrome('cbbcdc');
 console.log(test);
