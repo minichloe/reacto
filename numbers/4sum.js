@@ -5,20 +5,20 @@ function fourSum(nums, target) {
   nums = nums.sort((a, b) => a - b);
   const res = [];
   for (let i = 0; i <= nums.length - 4; i++) {
-    if (i > 0 && arr[i] === arr[i - 1]) continue;
-    let remainder = target - arr[i];
+    if (i > 0 && nums[i] === nums[i - 1]) continue;
+    let remainder = target - nums[i];
     for (let j = i + 1; j <= nums.length - 3; j++) {
       if (j > i + 1 && nums[j] === nums[j - 1]) continue;
       let left = j + 1,
         right = nums.length - 1;
       while (left < right) {
-        const sum = arr[j] + arr[left] + arr[right];
+        const sum = nums[j] + nums[left] + nums[right];
         if (sum === remainder) {
-          res.push([i, j, left, right]);
+          res.push([nums[i], nums[j], nums[left], nums[right]]);
           left++;
-          end--;
-          while (arr[left] === arr[left - 1]) left++;
-          while (arr[right] === arr[right + 1]) right--;
+          right--;
+          while (nums[left] === nums[left - 1]) left++;
+          while (nums[right] === nums[right + 1]) right--;
         } else {
           sum < remainder ? left++ : right--;
         }
@@ -27,3 +27,12 @@ function fourSum(nums, target) {
   }
   return res;
 }
+
+const test = fourSum([1, 0, -1, 0, -2, 2], 0);
+console.log(test);
+/* [
+  [-1,  0, 0, 1],
+  [-2, -1, 1, 2],
+  [-2,  0, 0, 2]
+]
+*/
