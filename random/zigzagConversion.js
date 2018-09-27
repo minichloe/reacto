@@ -1,4 +1,5 @@
 function convert(str, numRows) {
+  if (numRows === 1) return str;
   const res = new Array(numRows).fill('');
   let idx = 0,
     direction = 1;
@@ -11,5 +12,5 @@ function convert(str, numRows) {
   return res.join('');
 }
 
-const test = convert('PAYPALISHIRING', 4);
+const test = convert('ABC', 1);
 console.log(test);
