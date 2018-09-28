@@ -19,7 +19,6 @@ function uniquePathsWithObstacles(grid) {
 
   // Loop through each row of the grid
   for (let i = 0; i < grid.length; i++) {
-    console.log(board);
     for (let j = 1; j < board.length; j++) {
       // Do nothing in the first row as there is only one unique path
       if (i === 0 && grid[i][j] !== 1) continue;
@@ -29,7 +28,6 @@ function uniquePathsWithObstacles(grid) {
       else board[j] += board[j - 1];
     }
   }
-  console.log(board);
   return board[board.length - 1];
 }
 
