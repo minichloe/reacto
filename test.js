@@ -43,3 +43,39 @@ function threeSumClosest(arr, target) {
   }
   return res;
 }
+
+function removeNode(head, n) {
+  if (!head) return head;
+  let node = head;
+  let fast = head;
+  while (n) {
+    fast = fast.next;
+    n--;
+  }
+  if (!fast) return node.next;
+  while (fast.next) {
+    fast = fast.next;
+    node = node.next;
+  }
+  node.next = node.next.next;
+  return head;
+}
+
+function prefix(arr) {
+  if (!arr.length) return '';
+  arr.map(x => x.toLowerCase());
+  let res = 0;
+  for (let i = 0; i < arr[0].length; i++) {
+    let pre = true;
+    const char = arr[0][i];
+    for (let j = 0; j < arr.length; j++) {
+      if (arr[j][i] !== char) {
+        pre = false;
+        break;
+      }
+    }
+    if (pre) res += 1;
+    else break;
+  }
+  return arr[0].substring(0, res);
+}
