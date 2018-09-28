@@ -19,7 +19,7 @@ function reverseParentheses(s) {
   s = s.split('');
   while (s.lastIndexOf('(') > -1) {
     const openingIdx = s.lastIndexOf('(');
-    const closingIdx = s.slice(openingIdx).indexOf(')');
+    const closingIdx = openingIdx + s.slice(openingIdx).indexOf(')');
     const reverse = s.slice(openingIdx + 1, closingIdx).reverse();
     s.splice(openingIdx, closingIdx - openingIdx + 1, ...reverse);
   }
