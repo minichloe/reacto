@@ -8,29 +8,26 @@ function wordBreak(s, wordDict) {
       node = node[char];
     }
   });
-  let start = 0,
-    end = 0;
+  let start = 0;
   let node = trie;
   const res = [];
   for (let i = 0; i < s.length; i++) {
-    if (start === end && !node.hasOwnProperty(s[i])) return false;
-    if (!node.hasOwnProperty(s[i])) {
-      res.push(s.substring(start, end));
-      start = i;
-      end = start;
-      node = trie[s[i]];
+    const char = s[i];
+    if (!node.hasOwnProperty(char)) {
+      if (start === i) return false;
+      res.push(s.substring(start, i));
+      node = trie[char];
       if (!node) return false;
+      start = i;
     } else {
-      end++;
-      node = node[s[i]];
+      node = node[char];
     }
     if (i === s.length - 1) {
       res.push(s.substring(start));
     }
   }
-  console.log(res);
   return true;
 }
 
-const test = wordBreak('applepenapple', ['apple', 'pen']);
+const test = wordBreak('catsandog', ['cats', 'dog', 'sand', 'and', 'cat']);
 console.log(test);
