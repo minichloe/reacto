@@ -19,5 +19,5 @@ function minimum(A) {
 //   return i + 1;
 // }
 
-const test = minimum([1]);
+const test = minimum([2]);
 console.log(test);
