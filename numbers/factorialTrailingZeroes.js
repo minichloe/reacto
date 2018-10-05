@@ -1,15 +1,8 @@
 function trailingZeroes(n) {
-  let res = 1;
-  while (n > 1) {
-    res *= n;
-    n--;
-  }
   let zeroes = 0;
-  while (res % 10 === 0) {
-    zeroes++;
-    res = Math.floor(res / 10);
+  while (n > 4) {
+    zeroes += Math.floor((n /= 5));
   }
-  console.log(res % 10);
   return zeroes;
 }
 
