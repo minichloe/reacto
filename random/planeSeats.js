@@ -25,6 +25,7 @@ function planeSeats(rows, S) {
   return results;
 }
 
+// Solve using array method
 // function planeSeats(rows, reserved) {
 //   const map = {
 //     A: 0,
