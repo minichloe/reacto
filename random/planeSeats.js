@@ -64,5 +64,5 @@ function planeSeats(rows, S) {
 //   return results;
 // }
 
-const test = planeSeats(10, '1a 1b 3c 4d');
+const test = planeSeats(12, '10b 10d 10e 9e 9k 7a 7b 6e');
 console.log(test);
