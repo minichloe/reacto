@@ -2,20 +2,37 @@
 
 function partition(s) {
   const res = [];
-  for (let i = 0; i < s.length; i++) {
-    // if (s[i] > 0 && s[i] == s[i-1]) addPalindrome(i-1, i)
-    const curr = [];
-    for (let j = i + 1; j <= s.length; j++) {
-      curr.push(s.slice(i, j));
-      i = j;
-      j = i + 1;
+  const curr = [];
+  if (s === null || !s.length) return res;
+  addPalindrome(s, 0, curr, res);
+  return res;
+
+  function addPalindrome(s, start, curr, res) {
+    if (start === s.length) {
+      res.push([...curr]);
+      return;
     }
-    res.push(curr);
+    for (let i = start + 1; i <= s.length; i++) {
+      const str = s.slice(start, i);
+      if (isPalindrome(str)) {
+        curr.push(str);
+        addPalindrome(s, i, curr, res);
+        curr.splice(curr.length - 1, 1);
+      }
+    }
   }
 
-  return res;
-  function addPalindrome(l, r) {}
+  function isPalindrome(str) {
+    let left = 0,
+      right = str.length - 1;
+    while (left < right) {
+      if (str[left] !== str[right]) return false;
+      left++;
+      right--;
+    }
+    return true;
+  }
 }
 
-const test = partition('aab');
+const test = partition('abcbm');
 console.log(test);
