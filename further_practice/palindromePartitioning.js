@@ -4,10 +4,10 @@ function partition(s) {
   const res = [];
   const curr = [];
   if (s === null || !s.length) return res;
-  addPalindrome(s, 0, curr, res);
+  addPalindrome(s, 0, curr);
   return res;
 
-  function addPalindrome(s, start, curr, res) {
+  function addPalindrome(s, start, curr) {
     if (start === s.length) {
       res.push([...curr]);
       return;
@@ -16,8 +16,9 @@ function partition(s) {
       const str = s.slice(start, i);
       if (isPalindrome(str)) {
         curr.push(str);
-        addPalindrome(s, i, curr, res);
-        curr.splice(curr.length - 1, 1);
+        addPalindrome(s, i, curr);
+        // curr.splice(curr.length - 1, 1);
+        curr.pop();
       }
     }
   }
