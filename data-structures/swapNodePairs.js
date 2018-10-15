@@ -23,6 +23,6 @@ function swapPairsRecursive(head) {
   head.next.next = swapPairsRecursive(head.next.next);
   let next = head.next;
   head.next = next.next;
-  next.next - head;
+  next.next = head;
   return next;
 }
