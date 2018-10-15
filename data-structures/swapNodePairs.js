@@ -2,7 +2,7 @@
 // Given 1->2->3->4, you should return the list as 2->1->4->3.
 
 function swapPairs(head) {
-  if (!head) return head;
+  if (!head || !head.next) return head;
   const dummy = new ListNode(0);
   dummy.next = head;
   let node = dummy;
@@ -16,4 +16,13 @@ function swapPairs(head) {
     node = node.next.next;
   }
   return dummy.next;
+}
+
+function swapPairsRecursive(head) {
+  if (!head || !head.next) return head;
+  head.next.next = swapPairsRecursive(head.next.next);
+  let next = head.next;
+  head.next = next.next;
+  next.next - head;
+  return next;
 }
