@@ -1,4 +1,5 @@
-const topKFrequent = function(nums, k) {
+// Convert into priority queue using binary heap
+const topKFrequentPQ = function(nums, k) {
   nums = nums.reduce((obj, k) => {
     if (obj[k]) obj[k]++;
     else obj[k] = 1;
@@ -69,3 +70,38 @@ class PQ {
     }
   }
 }
+
+// Simplified heap sort
+function topKFrequent(nums, k) {
+  const list = [];
+  nums = nums.reduce((a, b) => {
+    if (a[b]) a[b]++;
+    else {
+      a[b] = 1;
+      list.push(b);
+    }
+    return a;
+  }, {});
+  const res = [];
+  while (k--) {
+    for (let i = parseInt(list.length / 2); i >= 0; --i) {
+      const cIdx = i * 2 + 1;
+      if (list[cIdx] && nums[list[cIdx]] >= nums[list[i]]) {
+        [list[cIdx], list[i]] = [list[i], list[cIdx]];
+      }
+      if (nums[list[i * 2]] >= nums[list[i]]) {
+        [list[i * 2], list[i]] = [list[i], list[i * 2]];
+      }
+    }
+    res.push(list.shift());
+  }
+  return res;
+}
+
+// Buckets solution
+
+const test = topKFrequent(
+  [3, 1, 1, 1, 2, 2, 3, 4, 5, 6, 7, 7, 7, 8, 8, 8, 8],
+  3
+);
+console.log(test);
