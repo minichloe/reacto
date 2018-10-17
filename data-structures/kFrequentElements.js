@@ -99,8 +99,28 @@ function topKFrequent(nums, k) {
 }
 
 // Buckets solution
+function topKFrequentBuckets(nums, k) {
+  nums = nums.reduce((a, b) => {
+    if (a[b]) a[b]++;
+    else a[b] = 1;
+    return a;
+  }, {});
+  const order = [],
+    res = [];
+  Object.keys(nums).forEach(x => {
+    const freq = nums[x];
+    if (order[freq] === undefined) order[freq] = [];
+    order[freq].push(Number(x));
+  });
+  for (let i = order.length - 1; i >= 0; i--) {
+    if (order[i]) {
+      res.push(...order[i]);
+    }
+    if (res.length >= k) return res.slice(0, k);
+  }
+}
 
-const test = topKFrequent(
+const test = topKFrequentBuckets(
   [3, 1, 1, 1, 2, 2, 3, 4, 5, 6, 7, 7, 7, 8, 8, 8, 8],
   3
 );
