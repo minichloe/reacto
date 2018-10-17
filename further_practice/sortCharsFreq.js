@@ -19,8 +19,7 @@ function frequencySort(s) {
     if (order[i] === undefined) continue;
     order[i].sort();
     for (x of order[i]) {
-      let k = i;
-      while (k--) res += x;
+      res += x.repeat(i);
     }
   }
   return res;
