@@ -1,22 +1,18 @@
 function getMaxOccurrences(s, minLength, maxLength, maxUnique) {
   s = s.toLowerCase();
-  const subStrings = [];
+  let max = 0;
+  const map = {};
   for (let i = 0; i < s.length; i++) {
     for (let j = i + minLength; j < s.length + 1; j++) {
       if (j - i > maxLength) break;
       const str = s.slice(i, j);
-      if (valid(str)) subStrings.push(str);
+      if (valid(str)) {
+        if (map[str]) map[str]++;
+        else map[str] = 1;
+        max = Math.max(max, map[str]);
+      }
     }
   }
-  let max = 0;
-  const strObj = subStrings.reduce((map, s) => {
-    if (map[s]) map[s]++;
-    else map[s] = 1;
-    max = Math.max(max, map[s]);
-    return map;
-  }, {});
-
-  console.log(strObj);
   return max;
 
   function valid(s) {
