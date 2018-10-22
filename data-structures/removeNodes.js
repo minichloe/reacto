@@ -1,3 +1,4 @@
+// Remove nodes > x
 function removeNodes(listHead, x) {
   if (!listHead) return listHead;
   listHead.next = removeNodes(listHead.next, x);
@@ -5,6 +6,7 @@ function removeNodes(listHead, x) {
   else return listHead;
 }
 
+// Remove nodes === x
 const removeElements = function(head, val) {
   while (head && head.val === val) head = head.next;
   if (!head) return null;
