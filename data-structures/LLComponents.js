@@ -5,21 +5,18 @@ function ListNode(val) {
 }
 const numComponents = function(head, G) {
   if (!head) return 0;
-  const map = {};
-  while (head) {
-    const key = head.val;
-    map[key] = head.next ? head.next.val : null;
-    head = head.next;
-  }
   G = new Set(G);
   let res = 0;
-  G.forEach(x => {
-    if (map[x] !== undefined) {
+  let curr = true;
+  while (head) {
+    if (G.has(head.val) && curr) {
       res++;
-      G.delete(x);
-      G.delete(map[x]);
+      curr = false;
+    } else if (!G.has(head.val)) {
+      curr = true;
     }
-  });
+    head = head.next;
+  }
   return res;
 };
 
