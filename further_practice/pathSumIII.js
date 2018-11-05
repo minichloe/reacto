@@ -22,3 +22,20 @@ function pathSum(root, sum) {
 }
 
 // Solution by travelling and saving it to hashmap
+function pathSumHash(root, sum) {
+  const map = {};
+  return travelMap(root, 0);
+
+  function travelMap(node, currSum) {
+    if (!node) return 0;
+    currSum += node.val;
+    let totalPaths = map[currSum - sum] || 0;
+    if (currSum === sum) totalPaths++;
+    if (map[currSum]) map[currSum]++;
+    else map[currSum] = 1;
+    totalPaths += travelMap(node.left, currSum);
+    totalPaths += travelMap(node.right, currSum);
+    map[currSum]--;
+    return totalPaths;
+  }
+}
