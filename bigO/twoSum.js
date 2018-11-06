@@ -11,3 +11,6 @@ function twoSum(arr, target) {
   }
   return results;
 }
+
+const test = twoSum([1, 2, 3, 4, 5, 6], 10);
+console.log(test);
