@@ -31,7 +31,7 @@ function stringPerumutations(str) {
   let i = 0;
   while (i < str.length) {
     const char = str[i];
-    const otherChars = str.slice(0, i) + str.slice(i);
+    const otherChars = str.slice(0, i) + str.slice(i + 1);
     stringPerumutations(otherChars).forEach(x => {
       res.push(char + x);
     });
