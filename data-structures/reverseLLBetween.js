@@ -39,3 +39,21 @@ function reverseBetween(head, m, n) {
   }
   return dummy.next;
 }
+
+function reverse(head, m, n) {
+  let dummy = new ListNode(0);
+  dummy.next = head;
+  let prev = dummy;
+  while (m) {
+    prev = prev.next;
+    m--;
+    n--;
+  }
+  let curr = prev.next;
+  while (--n) {
+    let next = curr.next;
+    curr.next = next.next;
+    next.next = prev.next;
+    prev.next = next;
+  }
+}
