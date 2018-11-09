@@ -1,0 +1,1 @@
+function search(nums, target) {}
